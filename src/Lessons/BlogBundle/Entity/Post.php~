@@ -1,0 +1,44 @@
+<?php
+	namespace Lessons\BlogBundle\Entity;
+
+	use Doctrine\ORM\Mapping as ORM;
+	use Symfony\Component\Validator\Constraints as Assert;
+
+	/**
+	*@ORM\Entity(repositoryClass="PostRepository")
+	*@ORM\Table(name="lessons_blog_post")
+	*/
+class Post
+{
+	/**
+	*@ORM\Id()
+	*@ORM\Column(type="integer")
+	*@ORM\GeneratedValue(strategy="AUTO")
+	*/
+	protected $id;
+
+	/**
+	*@ORM\Column(type="string",length=128)
+	*/
+	protected $title;
+
+	/**
+	*@ORM\Column(type="string",length=255)
+	*/
+	protected $description;
+
+	/**
+	*@ORM\Column(type="text",length=255)
+	*/
+	protected $text;
+
+	/**
+	*@ORM\Column(type="boolean",nullable=true)
+	*/
+	protected $published = false;
+
+	public function __toString()
+	{
+		return $this->title;
+	}
+}
